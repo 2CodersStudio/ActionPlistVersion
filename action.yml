@@ -3,16 +3,14 @@ description: 'To build release based on tag and verify version has been set in I
 inputs:
   plist-path:
     description: 'path to Info.plist file containing CFBundleShortVersionString'
-    required: true
+    required: true 
+outputs:
+  version: 
+    description: "Version returned"
 runs:
   using: composite
   steps:
     - name: Retrive plist version
       id: generatePlist
       run: ${{ github.action_path }}/obtain-version.sh ${{ inputs.plist-path }}
-      shell: bash
-  outputs: 
-      version: ${{ steps.generatePlist.outputs.version }}  
-branding:
-  icon: copy
-  color: purple
+      shell: bash     
