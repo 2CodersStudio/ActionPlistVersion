@@ -6,7 +6,8 @@ inputs:
     required: true 
 outputs:
   version: 
-    description: "Version returned"
+    description: "Version"
+    value: ${{ steps.generatePlist.outputs.version }}  
 runs:
   using: composite
   steps:
