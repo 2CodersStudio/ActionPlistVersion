@@ -12,9 +12,8 @@ echo "Plist path: $1"
 echo "Key: $2"
 
 if [[ -z "$1" || -z "$2" ]];
-then echo "::error::Info.plist path cant be null or empty";
+    then echo "::error::Info.plist path cant be null or empty";
 else 
-    
     if [["$2" == "XCFrameworkFormatVersion" || "$2" == "CFBundleShortVersionString" ]];
         then
         plist_version=$(/usr/libexec/PlistBuddy -c "Print $2" $1)
@@ -27,7 +26,6 @@ else
     else
         then echo "::error::No valid keys"
     fi
-    
 fi
 
 
