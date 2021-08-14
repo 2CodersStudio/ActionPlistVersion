@@ -16,5 +16,5 @@ runs:
   steps:
     - name: Retrive plist version
       id: generatePlist
-      run: ${{ github.action_path }}/obtain-version.sh ${{ inputs.plist-path }}
+      run: ${{ github.action_path }}/obtain-version.sh ${{ inputs.plist-path }} ${{ inputs.key }}
       shell: bash     
