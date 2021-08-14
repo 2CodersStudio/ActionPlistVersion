@@ -20,13 +20,13 @@ jobs:
           plist-path: test/Info-XCFrameworkFormatVersion.plist
           key: XCFrameworkFormatVersion
       - name: evaluate results CFResult
-          if: ${{ steps.CFResult.outputs.version != "1.0.3" }}
-          uses: actions/github-script@v3
-          with:
-            script: core.setFailed('CFResult NOK')
+        if: ${{ steps.CFResult.outputs.version != "1.0.3" }}
+        uses: actions/github-script@v4
+        with:
+          script: core.setFailed('CFResult NOK')
       - name: evaluate results XCResult
         if: ${{ steps.XCResult.outputs.version != "1.0" }}
-        uses: actions/github-script@v3
+        uses: actions/github-script@v4
         with:
           script: core.setFailed('CFResult NOK')
 
