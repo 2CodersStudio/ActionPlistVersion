@@ -15,7 +15,7 @@ else
      then echo "::error::Can't find version";
     else
         echo "::debug::Found version - $1 version: $plist_version"
-        echo "::set-output name=version::4.0"
+        echo "::set-output name=version::$plist_version"
     fi
     
 fi
