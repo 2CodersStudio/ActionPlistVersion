@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # Retrive the plist version
-# $1 - path to Info.plist file containing CFBundleShortVersionString
+# $1 - path to Info.plist file containing the giving key
+# $2 - valid keys: XCFrameworkFormatVersion or CFBundleShortVersionString
 #
 
 # Example:
@@ -10,12 +11,18 @@
 if [ -z "$1" ];
 then echo "::error::Info.plist path cant be null or empty";
 else 
-    plist_version=$(/usr/libexec/PlistBuddy -c "Print XCFrameworkFormatVersion" $1)
-    if [ -z "$plist_version" ]; 
-     then echo "::error::Can't find version";
+
+    if ["$2" == "XCFrameworkFormatVersion" || "$2" == "CFBundleShortVersionString" ];
+        then
+        plist_version=$(/usr/libexec/PlistBuddy -c "Print $2" $1)
+        if [ -z "$plist_version" ]; 
+            then echo "::error::Can't find version";
+        else
+            echo "::debug::Found version - $1 version: $plist_version"
+            echo "::set-output name=version::$plist_version"
+        fi
     else
-        echo "::debug::Found version - $1 version: $plist_version"
-        echo "::set-output name=version::$plist_version"
+        then echo "::error::No valid keys";
     fi
     
 fi

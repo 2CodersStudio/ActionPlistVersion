@@ -2,8 +2,11 @@ name: 'Retrieve the bundle version of the project'
 description: 'To build release based on tag and verify version has been set in Info.plist'
 inputs:
   plist-path:
-    description: 'path to Info.plist file containing CFBundleShortVersionString'
-    required: true 
+    description: 'path to Info.plist file containing XCFrameworkFormatVersion or CFBundleShortVersionString'
+    required: true
+  key:
+    description: 'path to Info.plist file containing XCFrameworkFormatVersion or CFBundleShortVersionString'
+    required: true
 outputs:
   version: 
     description: "Version"
