@@ -8,8 +8,11 @@ runs:
   using: composite
   steps:
     - name: Retrive plist version
+      id: generatePlist
       run: ${{ github.action_path }}/obtain-version.sh ${{ inputs.plist-path }}
       shell: bash
+  outputs: 
+      version: ${{ steps.generatePlist.outputs.version }}  
 branding:
   icon: copy
   color: purple
