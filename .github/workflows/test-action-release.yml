@@ -21,14 +21,14 @@ jobs:
           key: XCFrameworkFormatVersion
       - name: evaluate results CFResult
       - run: |
-        if [[ "${{ steps.CFResult.outputs.version }}" == "CFBundleShortVersionString" ]];
-          then echo "CFResult OK"
+        if [[ ${{ steps.CFResult.outputs.version }} == "CFBundleShortVersionString" ]];
+          then "echo "CFResult OK"
         else
           echo "CFResult NOK"
           exit 1
         fi
-        if [[ "${{ steps.XCResult.outputs.version }}" == "XCFrameworkFormatVersion" ]];
-          then echo "XCResult OK"
+        if [[ ${{ steps.XCResult.outputs.version }} == "XCFrameworkFormatVersion" ]];
+          then "echo "XCResult OK"
         else
           echo "XCResult NOK"
           exit 1
