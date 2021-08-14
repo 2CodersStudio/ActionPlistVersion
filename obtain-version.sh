@@ -10,12 +10,12 @@
 echo "Entry data:"
 echo "Plist path: $1"
 echo "Key: $2"
-echo "\n"
+
 if [ -z "$1" ];
 then echo "::error::Info.plist path cant be null or empty";
 else 
     
-    if ["$2" == "XCFrameworkFormatVersion" || "$2" == "CFBundleShortVersionString" ];
+    if ["$2" == "XCFrameworkFormatVersion"] || ["$2" == "CFBundleShortVersionString" ];
         then
         plist_version=$(/usr/libexec/PlistBuddy -c "Print $2" $1)
         if [ -z "$plist_version" ]; 
