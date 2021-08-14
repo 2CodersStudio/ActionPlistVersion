@@ -20,7 +20,8 @@ jobs:
           plist-path: test/Info-XCFrameworkFormatVersion.plist
           key: XCFrameworkFormatVersion
       - name: evaluate results CFResult
-      - run: |
+        shell: bash
+        run: |
         if [[ ${{ steps.CFResult.outputs.version }} == "CFBundleShortVersionString" ]];
           then "echo "CFResult OK"
         else
@@ -33,5 +34,7 @@ jobs:
           echo "XCResult NOK"
           exit 1
         fi
+
+        
         
 
