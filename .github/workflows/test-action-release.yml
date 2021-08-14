@@ -5,14 +5,44 @@ on: push
 jobs:
   test:
     runs-on: macos-latest
-
     steps:
       - uses: actions/checkout@v2.3.1
+      - name: Test CFBundleShortVersionString
+      - id: CFResult
       - uses: 2CodersStudio/ActionPlistVersion@main
         with:
           plist-path: test/Info-CFBundleShortVersionString.plist
           key: CFBundleShortVersionString
+      - name: Test XCFrameworkFormatVersion
+      - id: XCResult
       - uses: 2CodersStudio/ActionPlistVersion@main
         with:
           plist-path: test/Info-XCFrameworkFormatVersion.plist
           key: XCFrameworkFormatVersion
+      - name: evaluate results CFResult
+          if: ${{ steps.CFResult.outputs.version != "1.0.3" }}
+          uses: actions/github-script@v3
+          with:
+            script: core.setFailed('CFResult NOK')
+      - name: evaluate results XCResult
+        if: ${{ steps.XCResult.outputs.version != "1.0" }}
+        uses: actions/github-script@v3
+        with:
+          script: core.setFailed('CFResult NOK')
+
+
+      # - run: |
+      #   if [[  ]];
+      #     then echo "CFResult OK"
+      #   else
+      #     then echo "CFResult NOK"
+      #     exit 1
+      #   fi
+      #   if [[ steps.XCResult.outputs.version == "CFBundleShortVersionString" ]];
+      #     then echo "XCResult OK"
+      #   else
+      #     then echo "XCResult NOK"
+      #     exit 1
+      #   fi
+        
+
