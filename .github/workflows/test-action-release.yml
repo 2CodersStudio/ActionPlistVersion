@@ -24,13 +24,13 @@ jobs:
         if [[ ${{ steps.XCResult.outputs.version }} == "CFBundleShortVersionString" ]];
           then echo "CFResult OK"
         else
-          then echo "CFResult NOK"
+          echo "CFResult NOK"
           exit 1
         fi
         if [[ ${{ steps.XCResult.outputs.version }} == "XCFrameworkFormatVersion" ]];
           then echo "XCResult OK"
         else
-          then echo "XCResult NOK"
+          echo "XCResult NOK"
           exit 1
         fi
         
