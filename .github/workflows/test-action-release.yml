@@ -22,13 +22,13 @@ jobs:
       - name: evaluate results CFResult
         if: ${{ steps.CFResult.outputs.version != "1.0.3" }}
         uses: actions/github-script@v4
-        with:
-          script: core.setFailed('CFResult NOK')
+          with:
+            script: core.setFailed('CFResult NOK')
       - name: evaluate results XCResult
         if: ${{ steps.XCResult.outputs.version != "1.0" }}
-        uses: actions/github-script@v4
-        with:
-          script: core.setFailed('CFResult NOK')
+          uses: actions/github-script@v4
+            with:
+              script: core.setFailed('CFResult NOK')
 
 
       # - run: |
