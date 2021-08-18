@@ -4,7 +4,6 @@ on:
   push:
     branches: 
       - main
-
 jobs:
   test:
     runs-on: macos-latest
@@ -16,8 +15,9 @@ jobs:
         with:
           plist-path: test/Info-CFBundleShortVersionString.plist
           key: CFBundleShortVersionString
-      - run: |
-          if [[ ${{ steps.CFResult.outputs.version != "CFBundleShortVersionString" }} ]];
+      - name: Test CFResult
+        run: |
+          if [[ ${{ steps.CFResult.outputs.version != "1.0.3" }} ]];
             then echo "CFResult NOK"; exit 1
           fi  
       - name: Test XCFrameworkFormatVersion
@@ -26,7 +26,8 @@ jobs:
         with:
             plist-path: test/Info-XCFrameworkFormatVersion.plist
             key: XCFrameworkFormatVersion
-      - run: |
-          if [[ ${{ steps.XCResult.outputs.version != "XCFrameworkFormatVersion" }} ]];
+      - name: Test XCResult
+        run: |
+          if [[ ${{ steps.XCResult.outputs.version != "1.0" }} ]];
             then echo "XCResult NOK"; exit 1
           fi
