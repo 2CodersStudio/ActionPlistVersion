@@ -1,6 +1,7 @@
 name: test-action
 
 on: push
+  branches: main
 
 jobs:
   test:
@@ -19,11 +20,13 @@ jobs:
         with:
           plist-path: test/Info-XCFrameworkFormatVersion.plist
           key: XCFrameworkFormatVersion
+          
       - name: evaluate results CFResult
         run: |
               if [[ ${{ steps.CFResult.outputs.version != "CFBundleShortVersionString" }} ]];
                 then echo "CFResult NOK"; exit 1
               fi
+
       - name: evaluate results XCResult
         run: |
               if [[ ${{ steps.XCResult.outputs.version != "XCFrameworkFormatVersion" }} ]];
