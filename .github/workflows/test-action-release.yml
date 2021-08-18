@@ -16,7 +16,7 @@ jobs:
         with:
           plist-path: test/Info-CFBundleShortVersionString.plist
           key: CFBundleShortVersionString
-        run: |
+      - run: |
           if [[ ${{ steps.CFResult.outputs.version != "CFBundleShortVersionString" }} ]];
             then echo "CFResult NOK"; exit 1
           fi  
@@ -26,7 +26,7 @@ jobs:
         with:
             plist-path: test/Info-XCFrameworkFormatVersion.plist
             key: XCFrameworkFormatVersion
-        run: |
+      - run: |
           if [[ ${{ steps.XCResult.outputs.version != "XCFrameworkFormatVersion" }} ]];
             then echo "XCResult NOK"; exit 1
           fi
