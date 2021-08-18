@@ -17,18 +17,18 @@ jobs:
           plist-path: test/Info-CFBundleShortVersionString.plist
           key: CFBundleShortVersionString
       - name: Test XCFrameworkFormatVersion
-      - id: XCResult
-      - uses: 2CodersStudio/ActionPlistVersion@main
+        id: XCResult
+        uses: 2CodersStudio/ActionPlistVersion@main
         with:
-          plist-path: test/Info-XCFrameworkFormatVersion.plist
-          key: XCFrameworkFormatVersion
+            plist-path: test/Info-XCFrameworkFormatVersion.plist
+            key: XCFrameworkFormatVersion
       - name: evaluate results CFResult
-      - run: |
+        run: |
           if [[ ${{ steps.CFResult.outputs.version != "CFBundleShortVersionString" }} ]];
             then echo "CFResult NOK"; exit 1
           fi
       - name: evaluate results XCResult
-      - run: |
+        run: |
           if [[ ${{ steps.XCResult.outputs.version != "XCFrameworkFormatVersion" }} ]];
             then echo "XCResult NOK"; exit 1
           fi
