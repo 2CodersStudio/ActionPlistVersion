@@ -18,7 +18,7 @@ jobs:
       - name: Test CFResult
         run: |
           if [[ ${{ steps.CFResult.outputs.version != "1.0.3" }} ]];
-            then echo "CFResult NOK"; exit 1
+            then echo "CFResult NOK"
           fi  
       - name: Test XCFrameworkFormatVersion
         id: XCResult
@@ -29,5 +29,6 @@ jobs:
       - name: Test XCResult
         run: |
           if [[ ${{ steps.XCResult.outputs.version != "1.0" }} ]];
-            then echo "XCResult NOK"; exit 1
+            then echo "XCResult NOK"
           fi
+
