@@ -22,10 +22,10 @@ jobs:
             plist-path: test/Info-XCFrameworkFormatVersion.plist
             key: XCFrameworkFormatVersion
       - run:
-           if [[ ${{ steps.XCResult.outputs.version }} != "1.0" ]];
-             then echo "XCResult NOK"
+           if [[ ${{ steps.XCResult.outputs.version }} != 1.0 ]];
+             then echo "XCResult NOK"; exit 1
            fi
       - run:
-           if [[ ${{ steps.CFResult.outputs.version }} != "1.0.3" ]];
-             then echo "CFResult NOK"
+           if [[ ${{ steps.CFResult.outputs.version }} != 1.0.3 ]];
+             then echo "CFResult NOK"; exit 1
            fi
