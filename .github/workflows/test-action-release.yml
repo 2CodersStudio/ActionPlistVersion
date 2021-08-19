@@ -15,14 +15,10 @@ jobs:
         with:
           plist-path: test/Info-CFBundleShortVersionString.plist
           key: CFBundleShortVersionString
-      - name: Test CFResult
-        run: echo "ok"
       - name: Test XCFrameworkFormatVersion
         id: XCResult
         uses: 2CodersStudio/ActionPlistVersion@main
         with:
             plist-path: test/Info-XCFrameworkFormatVersion.plist
             key: XCFrameworkFormatVersion
-      - name: Test XCResult
-        run: echo "ok"
 
