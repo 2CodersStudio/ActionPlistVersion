@@ -28,7 +28,7 @@ jobs:
             then echo "XCResult OK";
            fi
       - run:
-          if [[ "${{ steps.CFResult.outputs.version }}"" != "1.0.3" ]];
+          if [[ "${{ steps.CFResult.outputs.version }}" != "1.0.3" ]];
             then echo "CFResult NOK"; exit 1
           else 
             then echo "CFResult OK";
