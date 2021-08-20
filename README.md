@@ -7,6 +7,6 @@ Use in workflow as follows:
         id: plistVersion
         with:
           plist-path: PathToInfoPlistFolder/Info.plist
-          key: CFBundleShortVersionString #could be XCFrameworkFormatVersion || CFBundleShortVersionString
+          key: CFBundleShortVersionString
         - name: Get Version
         run: echo Version ${{ steps.plistVersion.outputs.version }}"
